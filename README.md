@@ -10,7 +10,7 @@ Solution for create site collections through a customization form using CSOM for
 ### Solution ###
 Solution | Author(s)
 ---------|----------
-Provisioning.SiteCollectionCreation | Yuliia Afanasenko, Ivan Kalinichenko - Donetsk National University
+Provisioning.SiteCollectionCreation | Yuliia Afanasenko, Ivan Kalinichenko - GSI & Donetsk National University
  
 ### Version history ###
 Version  | Date | Comments
