@@ -1,0 +1,94 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "siteName": {
+            "type": "string"
+        },
+        "siteLocation": {
+            "type": "string"
+        },
+        "sku": {
+            "type": "string",
+            "allowedValues": [
+				"F1",
+				"D1",
+				"B1",
+				"B2",
+				"B3",
+				"S1",
+				"S2",
+				"S3"
+            ],
+            "defaultValue": "F1"
+        },
+        "repoUrl": {
+            "type": "string"
+        },
+        "branch": {
+            "type": "string"
+        },
+        "hostingPlanName": {
+            "type": "string"
+        },
+		"ClientId": {
+            "type": "string"
+        },
+		"ClientSecret": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/serverfarms",
+			"name": "[parameters('hostingPlanName')]",
+			"location": "[parameters('siteLocation')]",          
+            "apiVersion": "2015-08-01",
+			"sku": {
+			"name": "[parameters('sku')]",
+			"capacity": "0"
+		  },
+            "properties": {
+                "name": "[parameters('hostingPlanName')]"
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "name": "[parameters('siteName')]",
+            "location": "[parameters('siteLocation')]",
+            "apiVersion": "2015-08-01",
+			"dependsOn": [
+				 "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+			 ],
+			"properties": {
+				 "serverFarmId": "[parameters('hostingPlanName')]",
+				 "siteConfig": {
+					"appSettings": [{
+						"Name": "ClientId",
+						"Value": "[parameters('ClientID')]"
+					}, {
+						"Name": "ClientSecret",
+						"Value": "[parameters('ClientSecret')]"
+					}]
+				}
+			 },		            
+            "resources": [
+                {
+                    "type": "sourcecontrols",
+                    "name": "web",
+                    "apiVersion": "2015-08-01",
+                    "dependsOn": [
+                       "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+                    ],
+                    "properties": {
+                        "RepoUrl": "[parameters('repoUrl')]",
+                        "branch": "[parameters('branch')]",
+                        "IsManualIntegration": true
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+﻿#update div:first-child{
+    margin: 0 auto!important;
+}
+#waitingTime{
+    display: none;
+}
+
+#finishWarning{
+    top: 35%;
+    position: absolute;
+    left: 15%;
+    text-align: center;
+}
+p.descript{
+    margin: 0;
+    font-weight: 100;
+}
+h3{
+   font-weight: 400;
+}
+p.url-desc{
+        margin-left: -150px;
+}
+#divFieldDescription{
+    display: none;
+}
+.exist-name {
+    display: block;
+    color: #ff0000;
+    margin-left: -35px;
+}
+.footer-logo {
+    position: absolute;
+    bottom: 0;
+    right: 70px;
+}
+.footer-logo img {
+    padding-bottom: 3px;
+    vertical-align: middle;
+}
+.footer-logo a, .footer-logo p {
+    display: inline-block;
+}

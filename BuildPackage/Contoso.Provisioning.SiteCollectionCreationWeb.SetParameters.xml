@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="SPSiteCreator" />
+  <setParameter name="ClientId" value="test" />
+  <setParameter name="ClientSecret" value="test" />
+</parameters>
