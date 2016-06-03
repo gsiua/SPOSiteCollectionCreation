@@ -34,8 +34,8 @@ Version  | Date | Comments
       - **Client ID** - Choose **Generate**.
       - **Client Secret** - Choose **Generate**.
       - **Title** - A user-friendly title. For example: **Create Site add-in**.
-      - **App Domain** - The host name of the Web App. Web App - remote component of the SharePoint App. **Go to step "Deploy Web App to Azure", after you finished this step, you will have generated Web App host name. For example: <YOU-SITE-NAME>.azurewebsites.net**
-      - **Redirect URI** - The value must be a complete endpoint URL to your Web App including the protocol, which must be HTTPS. For example: **https://<YOU-SITE-NAME>.azurewebsites.net/Pages/Default.aspx?{StandardTokens}&amp;IsDlg=1&amp;SPHasRedirectedToSharePoint=1**. **You must replace only <YOU-SITE-NAME> in this url**
+      - **App Domain** - The host name of the Web App. Web App - remote component of the SharePoint App. **Go to step "Deploy Web App to Azure", after you finished this step, you will have generated Web App host name. For example: `<YOU-SITE-NAME>.azurewebsites.net`**
+      - **Redirect URI** - The value must be a complete endpoint URL to your Web App including the protocol, which must be HTTPS. For example: **`https://<YOU-SITE-NAME>.azurewebsites.net/Pages/Default.aspx?{StandardTokens}&amp;IsDlg=1&amp;SPHasRedirectedToSharePoint=1`**. **You must replace only `<YOU-SITE-NAME>` in this url**
       
   3. Choose **Create** on the form. The page will reload and show a confirmation of the values you entered. **Make a record of these values in a form that is easy to copy and paste to your notepad.** Then click **OK**.
 
