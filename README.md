@@ -39,14 +39,7 @@ Version  | Date | Comments
       
   3. Choose **Create** on the form. The page will reload and show a confirmation of the values you entered. **Make a record of these values in a form that is easy to copy and paste to your notepad.** Then click **OK**.
 
-  4. Now you need to grant permissions to the app principal. You will have to navigate to another page which is the **`/_layouts/AppInv.aspx`**. For example: ```https://<YOUR-APP-CATALOG-URL>/_layouts/AppInv.aspx```. Paste your client ID, which you generated early and click **lookup**. The lookup returns the following information for a particular client ID. Past code below without changes.
-
-	```XML
-	<AppPermissionRequests AllowAppOnlyPolicy="true">
-	  <AppPermissionRequest Scope="http://sharepoint/content/tenant" Right="FullControl" />
-	</AppPermissionRequests>
-	```
-  5. Edit **AppManifest.xml**:
+  4. Edit **AppManifest.xml**:
   	- Download **[Provisioning.SiteCollectionCreation.app](https://github.com/gsiua/SPOSiteCollectionCreation/blob/master/BuildPackage/Provisioning.SiteCollectionCreation.app)** from current repository (Click "View Raw").
   	- Rename file extensions from app to zip (**Provisioning.SiteCollectionCreation.app** to **Provisioning.SiteCollectionCreation.zip**). 
   	- Open this archive and copy **AppManifest.xml** to your Desktop Folder or other computer's folder. 
@@ -54,10 +47,19 @@ Version  | Date | Comments
   	- Replace **ClientId** to your Client ID, which was generated early.
   	- Copy changed **AppManifest.xml** to archive **Provisioning.SiteCollectionCreation.zip**
   	- Return file extensionto app (name must be **Provisioning.SiteCollectionCreation.app**)
-  6. **Add App to App Catalog**
+  5. **Add App to App Catalog**
  	For an app to be consumed, it must be added to an app catalog.
 	- Navigate to the app catalog and select Apps for SharePoint.
 	- Select New App and upload the **Provisioning.SiteCollectionCreation.app** file.
+
+  6. **Install App from App Catalog**
+  	- Navigate to your My Site, Click Ribbon Menu and click tile "Sites" (After update it's named "Sharepoint"). For example: `https://<YOUR-SHAREPOINT-TENANT-NAME>-my.sharepoint.com`. And add to URL `/_layouts/15/addanapp.aspx`. Finally url path `https://<YOUR-SHAREPOINT-TENANT-NAME>-my.sharepoint.com/_layouts/15/addanapp.aspx`
+  	- Find SharePoint App "SiteCollectionCreation" and press it.
+  	- After install App click them tile. You'll be redirected to Web App. Copy URL.
+  
+  7. **Change form "New site" to custom form**
+  	- Go to Configuration SharePoint Centre. Click to settings link. 
+  	- In the setings section "Start Site" select show link, paste Web Apps URL to input for custom form. Save. 
 
   **Deploy Web App to Azure**
   1. Click button **Deploy to Azure** [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/) <a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json" target="_blank"><img src="http://armviz.io/visualizebutton.png"/></a>
