@@ -23,44 +23,48 @@ Version  | Date | Comments
 ----------
 
 # Installation #
-**To register by using AppRegNew.aspx**
-  1. Navigate to http://SharePointWebsite/_layouts/15/AppRegNew.aspx on the tenancy.
+**To register SharePoint App**
+  1. Before this step, you must have App's Catalog, If it's not exist, you must create it. Navigate to your SharePoint tenancy app's catalog and add to catalog URL **/_layouts/15/AppRegNew.aspx**. For example: ```https://<YOUR-APP-CATALOG-URL>/_layouts/15/AppRegNew.aspx```
   
       **AppRegNew page form**
       
       ![](https://i-msdn.sec.s-msft.com/dynimg/IC802667.png)
       
   2. Enter values for the follow form fields:
-      - **Add-in ID** - Also known as client ID, is a GUID that can be generated (when you choose **Generate**). The value must be unique for each add-in, and must be lower case. The following is an example of an add-in client ID: **a5f89717-5ef9-4ee1-ac7c-5a6be65f5db7**.
-      - **Add-in Secret** - Also known as the client secret, an opaque string. It is generated on the AppRegNew.aspx page by using the **Generate** button. The following is an example of an add-in secret: **7834cfGyPWrQITHSKRlhnrWzk2F6ZOUeml9h3v1znOg=**.
-      - **Title** - A user-friendly title; for example, **Create Site add-in**. Users are prompted to grant or deny the add-in the permissions that the add-in is requesting. This title appears as the name of the add-in on the consent prompt.
-      - **Add-in Domain** - The host name of the remote component of the SharePoint Add-in. If the remote application isn't using port 443, the add-in domain must also include the port number. The add-in domain must match the URL bindings you use for your web application. Do not include protocol ("https:") or "/" characters in this value. If your web application host is using a DNS CNAME alias, use the alias. Some examples: www.domain.com:3333, www.domain.com
-      - **Redirect URI** - The endpoint in your remote application to which ACS sends an authentication code. The value must be a complete endpoint URL including the protocol, which must be HTTPS. For example: **https://www.domain.com/Pages/Default.aspx?{StandardTokens}&amp;IsDlg=1&amp;SPHasRedirectedToSharePoint=1**
+      - **Client ID** - Choose **Generate**.
+      - **Client Secret** - Choose **Generate**.
+      - **Title** - A user-friendly title. For example: **Create Site add-in**.
+      - **App Domain** - The host name of the Web App. Web App - remote component of the SharePoint App. **Go to step "Deploy Web App to Azure", after you finished this step, you will have generated Web App host name. For example: <YOU-SITE-NAME>.azurewebsites.net**
+      - **Redirect URI** - The value must be a complete endpoint URL to your Web App including the protocol, which must be HTTPS. For example: **https://<YOU-SITE-NAME>.azurewebsites.net/Pages/Default.aspx?{StandardTokens}&amp;IsDlg=1&amp;SPHasRedirectedToSharePoint=1**. **You must replace only <YOU-SITE-NAME> in this url**
       
-  3. Choose Create on the form. The page will reload and show a confirmation of the values you entered. Make a record of these values in a form that is easy to copy and paste.
+  3. Choose **Create** on the form. The page will reload and show a confirmation of the values you entered. **Make a record of these values in a form that is easy to copy and paste to your notepad.** Then click **OK**.
 
-  4. Now you need to grant permissions to the add-in principal.  You will have to navigate to another page in SharePoint which is the **“_layouts/AppInv.aspx”**. This is where you will grant the application Tenant permissions. To do a lookup, you have to remember the client ID (also known as the add-in ID) that was used to register the add-in. The lookup returns the following information for a particular client ID.
+  4. Now you need to grant permissions to the app principal. You will have to navigate to another page which is the **/_layouts/AppInv.aspx**. For example: ```https://<YOUR-APP-CATALOG-URL>/_layouts/AppInv.aspx```. Paste your client ID, which you generated early and click **lookup**. The lookup returns the following information for a particular client ID. Past code below without changes.
 
 	```XML
 	<AppPermissionRequests AllowAppOnlyPolicy="true">
 	  <AppPermissionRequest Scope="http://sharepoint/content/tenant" Right="FullControl" />
 	</AppPermissionRequests>
 	```
-  5. Edit **AppManifest.xml** in **BuildPackage/Provisioning.SiteCollectionCreation.app**. Rename **Provisioning.SiteCollectionCreation.app** to **Provisioning.SiteCollectionCreation.zip**. In this package in the **AppManifest.xml** change domain example.com on your web site domain and edit **ClientId**. Return file name to **Provisioning.SiteCollectionCreation.app*.
+  5. Edit **AppManifest.xml**:
+  	- Download **[Provisioning.SiteCollectionCreation.app](https://github.com/gsiua/SPOSiteCollectionCreation/blob/master/BuildPackage/Provisioning.SiteCollectionCreation.app)** from current repository (Click "View Raw").
+  	- Rename file extensions from app to zip (**Provisioning.SiteCollectionCreation.app** to **Provisioning.SiteCollectionCreation.zip**). 
+  	- Open this archive and copy **AppManifest.xml** to your Desktop Folder or other computer's folder. 
+  	- Edit this file, replace URI in the ```<Start Page>YOUR-REDIRECT-URI</Start Page>``` section to your Redirect URI, which was generated early.
+  	- Replace **ClientId** to your Client ID, which was generated early.
+  	- Copy changed **AppManifest.xml** to archive **Provisioning.SiteCollectionCreation.zip**
+  	- Return file extensionto app (name must be **Provisioning.SiteCollectionCreation.app**)
+  6. **Add App to App Catalog**
+ 	For an app to be consumed, it must be added to an app catalog.
+	- Navigate to the app catalog and select Apps for SharePoint.
+	- Select New App and upload the **Provisioning.SiteCollectionCreation.app** file.
 
-**Web App deployment Scenarios**
   **Deploy Web App to Azure**
   1. Click button **Deploy to Azure** [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/) <a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json" target="_blank"><img src="http://armviz.io/visualizebutton.png"/></a>
   2. Choose web site configuration and fill **Client ID**, **Client Secret**.
+  
   **Deploy Web App to dedicated server**
-  1. Use Web Deploy module for IIS or ```XML BuildPackage/Contoso.Provisioning.SiteCollectionCreationWeb.deploy.cmd ``` for deploy on your server. Package with web app - ```XML BuildPackage/Contoso.Provisioning.SiteCollectionCreationWeb.zip ```
-
-**Add App to App Catalog**
- For an app to be consumed, it must be added to an app catalog.
-
-	1. Navigate to the app catalog and select Apps for SharePoint.
-
-	2. Select New App and upload the .app file produced from the last set of steps.
+  1. Use Web Deploy module for IIS or **[Contoso.Provisioning.SiteCollectionCreationWeb.deploy.cmd](https://github.com/gsiua/SPOSiteCollectionCreation/blob/master/BuildPackage/Contoso.Provisioning.SiteCollectionCreationWeb.deploy.cmd)** for deploy on your server. Package with web app - **[Contoso.Provisioning.SiteCollectionCreationWeb.zip](https://github.com/gsiua/SPOSiteCollectionCreation/blob/master/BuildPackage/Contoso.Provisioning.SiteCollectionCreationWeb.zip)**
 
 # Dependencies #
 
