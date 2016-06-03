@@ -24,7 +24,7 @@ Version  | Date | Comments
 
 # Installation #
 **To register SharePoint App**
-  1. Before this step, you must have App's Catalog, If it's not exist, you must create it. Navigate to your SharePoint tenancy app's catalog and add to catalog URL **/_layouts/15/AppRegNew.aspx**. For example: ```https://<YOUR-APP-CATALOG-URL>/_layouts/15/AppRegNew.aspx```
+  1. Before this step, you must have App's Catalog, If it's not exist, you must create it. Navigate to your SharePoint tenancy app's catalog and add to catalog URL **`/_layouts/15/AppRegNew.aspx`**. For example: ```https://<YOUR-APP-CATALOG-URL>/_layouts/15/AppRegNew.aspx```
   
       **AppRegNew page form**
       
@@ -39,7 +39,7 @@ Version  | Date | Comments
       
   3. Choose **Create** on the form. The page will reload and show a confirmation of the values you entered. **Make a record of these values in a form that is easy to copy and paste to your notepad.** Then click **OK**.
 
-  4. Now you need to grant permissions to the app principal. You will have to navigate to another page which is the **/_layouts/AppInv.aspx**. For example: ```https://<YOUR-APP-CATALOG-URL>/_layouts/AppInv.aspx```. Paste your client ID, which you generated early and click **lookup**. The lookup returns the following information for a particular client ID. Past code below without changes.
+  4. Now you need to grant permissions to the app principal. You will have to navigate to another page which is the **`/_layouts/AppInv.aspx`**. For example: ```https://<YOUR-APP-CATALOG-URL>/_layouts/AppInv.aspx```. Paste your client ID, which you generated early and click **lookup**. The lookup returns the following information for a particular client ID. Past code below without changes.
 
 	```XML
 	<AppPermissionRequests AllowAppOnlyPolicy="true">
