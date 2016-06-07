@@ -55,7 +55,7 @@ Version  | Date | Comments
   6. **Install App from App Catalog**
   	- Navigate to your My Site, Click Ribbon Menu and click tile "Sites" (After update it's named "Sharepoint"). For example: `https://<YOUR-SHAREPOINT-TENANT-NAME>-my.sharepoint.com`. And add to URL `/_layouts/15/addanapp.aspx`. Finally url path `https://<YOUR-SHAREPOINT-TENANT-NAME>-my.sharepoint.com/_layouts/15/addanapp.aspx`
   	- Find SharePoint App "SiteCollectionCreation" and press it.
-  	- After install App click right button them tile and copy URL.
+  	- After install App click right button them tile to copy URL.
   
   7. **Change form "New site" to custom form**
   	- Go to Configuration SharePoint Centre. Click to settings link. 
