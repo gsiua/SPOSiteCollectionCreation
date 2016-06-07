@@ -55,11 +55,11 @@ Version  | Date | Comments
   6. **Install App from App Catalog**
   	- Navigate to your My Site, Click Ribbon Menu and click tile "Sites" (After update it's named "Sharepoint"). For example: `https://<YOUR-SHAREPOINT-TENANT-NAME>-my.sharepoint.com`. And add to URL `/_layouts/15/addanapp.aspx`. Finally url path `https://<YOUR-SHAREPOINT-TENANT-NAME>-my.sharepoint.com/_layouts/15/addanapp.aspx`
   	- Find SharePoint App "SiteCollectionCreation" and press it.
-  	- After install App click them tile. You'll be redirected to Web App. Copy URL.
+  	- After install App click right button them tile and copy URL.
   
   7. **Change form "New site" to custom form**
   	- Go to Configuration SharePoint Centre. Click to settings link. 
-  	- In the setings section "Start Site" select show link, paste Web Apps URL to input for custom form. Save. 
+  	- In the setings section "Start Site" select show link, paste App URL to input for custom form. Save. 
 
   **Deploy Web App to Azure**
   1. Click button **Deploy to Azure** [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/) <a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json" target="_blank"><img src="http://armviz.io/visualizebutton.png"/></a>
